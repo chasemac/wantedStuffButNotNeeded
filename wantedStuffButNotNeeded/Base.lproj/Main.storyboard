@@ -29,21 +29,21 @@
                                     <segment title="Second"/>
                                 </segments>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ssf-6T-LY6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ssf-6T-LY6">
                                 <rect key="frame" x="20" y="108" width="560" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="135" id="Z7A-k9-cGY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="135" id="Z7A-k9-cGY" customClass="ItemCell" customModule="wantedStuffButNotNeeded" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z7A-k9-cGY" id="WC0-o3-HdR">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="134.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="135"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Hs-Un-DCl">
                                                     <rect key="frame" x="8" y="8" width="544" height="118.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9HV-Up-DpX">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="legos" translatesAutoresizingMaskIntoConstraints="NO" id="9HV-Up-DpX">
                                                             <rect key="frame" x="8" y="8" width="102.5" height="102.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="9HV-Up-DpX" secondAttribute="height" multiplier="1:1" id="0iY-Iw-eNA"/>
@@ -113,6 +113,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="details" destination="DIq-If-iyw" id="E8H-Xm-ea3"/>
+                                            <outlet property="price" destination="TNW-0n-YaW" id="pPs-mp-4MC"/>
+                                            <outlet property="thumb" destination="9HV-Up-DpX" id="4YJ-5F-R9H"/>
+                                            <outlet property="title" destination="Ywx-6M-Sn0" id="4M6-hm-U6I"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -131,6 +137,10 @@
                     <navigationItem key="navigationItem" id="bbn-kZ-v4U">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hzl-Cs-Zrs"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segment" destination="ZJb-Pb-J4X" id="pYb-hx-vAz"/>
+                        <outlet property="tableView" destination="Ssf-6T-LY6" id="fM7-wl-zxn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,4 +165,7 @@
             <point key="canvasLocation" x="340" y="1089"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="legos" width="1500" height="1500"/>
+    </resources>
 </document>
