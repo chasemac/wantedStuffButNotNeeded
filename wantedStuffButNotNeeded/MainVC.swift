@@ -129,6 +129,15 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFe
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let objs = fetchedResultsController.fetchedObjects where objs.count > 0{
+            let item = objs[indexPath.row] as! Item
+            
+            performSegueWithIdentifier("ItemDetailsVC", sender: item)
+            
+        }
+    }
+    
     func generateTestData() {
         let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: ad.managedObjectContext) as! Item
         
@@ -149,6 +158,13 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFe
         item3.details = "Best car ever!!!!!!"
         
         ad.saveContext()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ItemDetailsVC" {
+            let vc = segue.destinationViewController as! ItemDetailsVC
+            vc.itemToEdit = sender as? Item
+        }
     }
 
 

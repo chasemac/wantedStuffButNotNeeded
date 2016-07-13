@@ -151,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="1110" y="1089"/>
         </scene>
-        <!--Item DetailsVC-->
+        <!--Title-->
         <scene sceneID="FCr-Ce-K3y">
             <objects>
                 <viewController id="uDG-Q4-kF1" customClass="ItemDetailsVC" customModule="wantedStuffButNotNeeded" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,6 +258,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="materialDesign" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="uDG-Q4-kF1" eventType="touchUpInside" id="l76-DJ-Dc4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -285,6 +288,14 @@
                             <constraint firstItem="lKS-3E-SHh" firstAttribute="top" secondItem="nIx-ud-NQV" secondAttribute="bottom" constant="21" id="vyO-1c-82n"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="XKC-G9-BvV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="oA9-mM-Ah1">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deletePressed:" destination="uDG-Q4-kF1" id="xJ0-34-ccf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="detailField" destination="dev-5H-MpG" id="UoS-rX-axM"/>

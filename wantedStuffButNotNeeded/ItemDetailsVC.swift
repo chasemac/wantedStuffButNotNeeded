@@ -17,6 +17,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var detailField: CustomTextField!
     
     var stores = [Store]()
+    var itemToEdit: Item?
     
 
     override func viewDidLoad() {
@@ -25,6 +26,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         storePicker.delegate = self
         storePicker.dataSource = self
         getStores()
+        if itemToEdit != nil {
+            loadItemData()
+        }
         
 //        let store1 = NSEntityDescription.insertNewObjectForEntityForName("Store", inManagedObjectContext: ad.managedObjectContext) as! Store
 //        store1.name = "Amazon"
@@ -40,6 +44,39 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
 //        store6.name = "Best Buy"
 //        
 //        ad.saveContext()
+    }
+    
+    func loadItemData() {
+        if let item = itemToEdit {
+            
+            if let title = item.title {
+                titleField.text = title
+            }
+            
+            
+            if let price = item.price {
+                priceField.text = "\(price)"
+            }
+            
+            if let details = item.details {
+                detailField.text = details
+            }
+            
+            
+            if let store = item.store {
+                
+                var index = 0
+                repeat {
+                    let s = stores[index]
+                    
+                    if s.name == store.name {
+                        storePicker.selectRow(index, inComponent: 0, animated: false)
+                        break
+                    }
+                    index += 1
+                } while (index < stores.count)
+            }
+        }
     }
     
     func getStores() {
@@ -67,8 +104,45 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(row)
+        
     }
 
+    @IBAction func savePressed(sender: AnyObject) {
+        
+        var item: Item!
+        
+        if itemToEdit == nil {
+            item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: ad.managedObjectContext) as! Item
+        } else {
+            item = itemToEdit
+        }
+        
+        if let title = titleField.text {
+            item.title = title
+        }
+        
+        if let price = priceField.text {
+            let priceStr = NSString(string: price)
+            let priceDbl = priceStr.doubleValue
+            item.price = NSNumber(double: priceDbl)
+        }
+        
+        if let details = detailField.text {
+            item.details = details
+        }
+        
+        item.store = stores[storePicker.selectedRowInComponent(0)]
+        
+        ad.saveContext()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
+    @IBAction func deletePressed(sender: AnyObject) {
+        if itemToEdit != nil {
+            ad.managedObjectContext.deleteObject(itemToEdit!)
+            
+        }
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
 }
