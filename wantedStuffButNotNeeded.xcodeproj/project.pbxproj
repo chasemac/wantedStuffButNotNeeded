@@ -23,6 +23,8 @@
 		0E01B4B91D317E28002157A4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01B4B11D317E28002157A4 /* Store.swift */; };
 		0E01B4BF1D31839D002157A4 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01B4BE1D31839D002157A4 /* MaterialView.swift */; };
 		0E01B4C11D355C1D002157A4 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E01B4C01D355C1D002157A4 /* ItemCell.swift */; };
+		0E2A5E821D35C1D5009FAE92 /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A5E811D35C1D5009FAE92 /* ItemDetailsVC.swift */; };
+		0E2A5E841D35DF07009FAE92 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2A5E831D35DF07009FAE92 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		0E01B4B11D317E28002157A4 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		0E01B4BE1D31839D002157A4 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		0E01B4C01D355C1D002157A4 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		0E2A5E811D35C1D5009FAE92 /* ItemDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
+		0E2A5E831D35DF07009FAE92 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				0E01B4971D307DED002157A4 /* MainVC.swift */,
+				0E2A5E811D35C1D5009FAE92 /* ItemDetailsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			children = (
 				0E01B4BE1D31839D002157A4 /* MaterialView.swift */,
 				0E01B4C01D355C1D002157A4 /* ItemCell.swift */,
+				0E2A5E831D35DF07009FAE92 /* CustomTextField.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -208,11 +214,13 @@
 				0E01B4C11D355C1D002157A4 /* ItemCell.swift in Sources */,
 				0E01B4981D307DED002157A4 /* MainVC.swift in Sources */,
 				0E01B4B81D317E28002157A4 /* Store+CoreDataProperties.swift in Sources */,
+				0E2A5E821D35C1D5009FAE92 /* ItemDetailsVC.swift in Sources */,
 				0E01B4B91D317E28002157A4 /* Store.swift in Sources */,
 				0E01B49E1D307DED002157A4 /* wantedStuffButNotNeeded.xcdatamodeld in Sources */,
 				0E01B4B41D317E28002157A4 /* Image+CoreDataProperties.swift in Sources */,
 				0E01B4B21D317E28002157A4 /* Item+CoreDataProperties.swift in Sources */,
 				0E01B4961D307DED002157A4 /* AppDelegate.swift in Sources */,
+				0E2A5E841D35DF07009FAE92 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

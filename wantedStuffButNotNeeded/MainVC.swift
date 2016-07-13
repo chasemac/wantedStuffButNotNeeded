@@ -21,18 +21,44 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFe
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // generateTestData()
+        attemptFetch()
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
         return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        
         return 0
     }
     
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 132
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as! ItemCell
+        configureCell(cell, indexPath: indexPath)
+        
+        return cell
+    }
+    
+    func configureCell(cell: ItemCell, indexPath: NSIndexPath) {
+        if let item = fetchedResultsController.objectAtIndexPath(indexPath) as? Item {
+            //update data
+            cell.configureCell(item)
+        }
     }
     
     func attemptFetch() {
@@ -88,7 +114,7 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFe
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! ItemCell
                 // update cell data
-                
+                configureCell(cell, indexPath: indexPath)
             }
             break
         case .Move:
@@ -100,12 +126,30 @@ class MainVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFe
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
             break
-        default:
-            <#code#>
         }
     }
     
-    
+    func generateTestData() {
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: ad.managedObjectContext) as! Item
+        
+        item.title = "Cool Lego Set"
+        item.price = 49.99
+        item.details = "This is super cool and I want itt sooo bad!"
+        
+        let item2 = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: ad.managedObjectContext) as! Item
+        
+        item2.title = "USB Cable"
+        item2.price = 149.99
+        item2.details = "What!!! So pricey!!"
+        
+        let item3 = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: ad.managedObjectContext) as! Item
+        
+        item3.title = "R8 Auddi"
+        item3.price = 4900000
+        item3.details = "Best car ever!!!!!!"
+        
+        ad.saveContext()
+    }
 
 
 }
